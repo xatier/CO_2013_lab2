@@ -38,7 +38,7 @@ reg            Branch_o;
 
 always@(*) begin
     case (instr_op_i)
-        // XXX: the ALI_op is defined by myself? @_@?
+        // XXX: the ALU_op is defined by myself? @_@?
         // r-types: add, sub, and, or, slt
         6'b000000:
             {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o} <= 7'b1_100_010;
