@@ -1,22 +1,22 @@
 `timescale 1ns/1ps
 
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    10:58:01 10/10/2011 
-// Design Name: 
-// Module Name:    alu_top 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
+// Company:
+// Engineer:
 //
-// Dependencies: 
+// Create Date:    10:58:01 10/10/2011
+// Design Name:
+// Module Name:    alu_top
+// Project Name:
+// Target Devices:
+// Tool versions:
+// Description:
+//
+// Dependencies:
 //dddd
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -53,13 +53,13 @@ always@( * )
 begin
   a = src1 ^ A_invert;  // the mux to get real operand a
   b = src2 ^ B_invert;  // get b
-  
+
   case (operation[1:0])
-	  // and/or/add/slt
-	  4'b00: begin result = a&b; cout = 0; end   // use the builtin and/or operators
-	  4'b01: begin result = a|b; cout = 0; end
-	  4'b10: begin result = a^b^cin; cout = a&b | a&cin | b&cin; end   // this is a full adder
-	  4'b11: begin result = less; cout = a&b | a&cin | b&cin; end      // set less to result, pass the carry to next stage
-	endcase
+      // and/or/add/slt
+      4'b00: begin result = a&b; cout = 0; end   // use the builtin and/or operators
+      4'b01: begin result = a|b; cout = 0; end
+      4'b10: begin result = a^b^cin; cout = a&b | a&cin | b&cin; end   // this is a full adder
+      4'b11: begin result = less; cout = a&b | a&cin | b&cin; end      // set less to result, pass the carry to next stage
+    endcase
 end
 endmodule

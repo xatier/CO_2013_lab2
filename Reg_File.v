@@ -56,7 +56,7 @@ always @( negedge rst_n or posedge clk_i  ) begin
     else begin
         if(RegWrite_i)
             Reg_File[RDaddr_i] <= RDdata_i;
-        else 
+        else
             Reg_File[RDaddr_i] <= Reg_File[RDaddr_i];
     end
 end
