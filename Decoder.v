@@ -15,7 +15,8 @@ module Decoder(
     ALU_op_o,
     ALUSrc_o,
     RegDst_o,
-    Branch_o
+    Branch_o,
+    SinExt_o
     );
 
 //I/O ports
@@ -26,6 +27,7 @@ output [3-1:0] ALU_op_o;
 output         ALUSrc_o;
 output         RegDst_o;
 output         Branch_o;
+output         SinExt_o;
 
 //Internal Signals
 reg    [3-1:0] ALU_op_o;
@@ -33,6 +35,7 @@ reg            ALUSrc_o;
 reg            RegWrite_o;
 reg            RegDst_o;
 reg            Branch_o;
+reg            SinExt_o;
 
 //Parameter
 
@@ -41,18 +44,18 @@ always@(*) begin
         // XXX: the ALU_op is defined by myself? @_@?
         // r-types: add, sub, and, or, slt
         6'b000000:
-            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o} <= 7'b1_100_010;
+            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o, SinExt_o} <= 8'b1_100_0101;
         // addi (add imm)
         6'b001000:
-            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o} <= 7'b1_000_100;
+            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o, SinExt_o} <= 8'b1_000_1001;
         // beq
         6'b000100:
-            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o} <= 7'b0_001_001;
+            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o, SinExt_o} <= 8'b0_001_0011;
         // ori (or imm)
         6'b001101:
-            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o} <= 7'b1_010_110;
+            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o, SinExt_o} <= 8'b1_010_1000;
         default:
-            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o} <= 7'bxxxxxxx;
+            {RegWrite_o, ALU_op_o, ALUSrc_o, RegDst_o, Branch_o, SinExt_o} <= 8'bxxxxxxxx;
     endcase
 end
 

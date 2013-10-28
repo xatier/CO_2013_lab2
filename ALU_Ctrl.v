@@ -36,15 +36,15 @@ always@(*) begin
             case (funct_i)
                 6'b100100: ALUCtrl_o <= 4'b0000;    // and 0000
                 6'b100101: ALUCtrl_o <= 4'b0001;    // or  0001
-                6'b000001: ALUCtrl_o <= 4'b0010;    // add 0010
+                6'b100000: ALUCtrl_o <= 4'b0010;    // add 0010
                 6'b100010: ALUCtrl_o <= 4'b0110;    // sub 0110
                 6'b101010: ALUCtrl_o <= 4'b0111;    // slt 0111
                 default:   ALUCtrl_o <= 4'bxxxx;
             endcase
-        3'b000: ALUCtrl_o <= 4'b0010;               // add in  addi
-        3'b001: ALUCtrl_o <= 4'b0110;               // sub in bdq
-        3'b010: ALUCtrl_o <= 4'b0001;               // or in ori
-        default: 4'bxxxx;
+        3'b000:  ALUCtrl_o <= 4'b0010;               // add in  addi
+        3'b001:  ALUCtrl_o <= 4'b0110;               // sub in bdq
+        3'b010:  ALUCtrl_o <= 4'b0001;               // or in ori
+        default: ALUCtrl_o <= 4'bxxxx;
     endcase
 end
 
