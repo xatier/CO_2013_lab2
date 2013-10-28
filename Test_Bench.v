@@ -92,7 +92,7 @@ initial  begin
     RST = 1;
     pc = 32'd0;
 
-    for(;count != `END_COUNT;)begin
+    while(count != `END_COUNT)begin
         instruction = cpu.IM.Instr_Mem[ pc>>2 ];
         pc = pc + 32'd4;
 
