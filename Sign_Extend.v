@@ -30,8 +30,8 @@ always@(*) begin
 // Ref. http://excamera.com/sphinx/fpga-verilog-sign.html
 
     // in ori, the immediate part needs zero extension
-    data_o <= select_i ? {16{data_i[15]}, data_i} :
-                         {16{1'b0}, data_i};
+    data_o <= select_i ? {{16{data_i[15]}}, data_i} :
+                         {{16{1'b0}}, data_i};
 end
 
 endmodule
